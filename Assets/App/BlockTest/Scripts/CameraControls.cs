@@ -7,7 +7,6 @@ using System.Collections;
 
 namespace Assets.App.BlockTest.Scripts
 {
-    [RequireComponent(typeof(PixelPerfectCamera))]
     [RequireComponent(typeof(Rigidbody2D))]
     public class CameraControls : MonoBehaviour
     {
@@ -25,12 +24,11 @@ namespace Assets.App.BlockTest.Scripts
         [SerializeField]
         private string zoomActionId;
         private InputAction zoomAction;
-        [SerializeField]
-        private Animator animator;
 
         readonly WaitForSeconds delayBetweenZoomToggles = new(1f);
 
         private PixelPerfectCamera pixelPerfectCamera;
+        private Animator animator;
 
         void Awake()
         {
@@ -47,13 +45,14 @@ namespace Assets.App.BlockTest.Scripts
 
             zoomAction = InputSystem.actions.FindAction(zoomActionId);
             zoomAction.performed += OnToggleZoom;
-
-            rigidbody2dComponent = GetComponent<Rigidbody2D>();
-            pixelPerfectCamera = GetComponent<PixelPerfectCamera>();
         }
 
         void Start()
         {
+            rigidbody2dComponent = GetComponent<Rigidbody2D>();
+            pixelPerfectCamera = GetComponentInChildren<PixelPerfectCamera>();
+            animator = GetComponentInChildren<Animator>();
+
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
