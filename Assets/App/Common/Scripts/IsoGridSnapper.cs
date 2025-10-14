@@ -1,13 +1,20 @@
 using UnityEngine;
 
+using Assets.App.Common.Scripts.CustomProperties.Vector2WithLimits;
+
 #if UNITY_EDITOR
 namespace Assets.App.Common.Scripts
 {
     [ExecuteInEditMode]
     public class IsoGridSnapper : MonoBehaviour
     {
+        [Vector2WithLimits(-.5f, .5f, -.5f, .5f)]
         [SerializeField]
         private Vector2 isoOffset;
+
+        [Vector2WithLimits(-.5f, .5f, -.5f, .5f)]
+        [SerializeField]
+        private Vector2 cartesianOffset;
 
         private Grid gridComponent;
 
@@ -56,8 +63,8 @@ namespace Assets.App.Common.Scripts
             sizeX = gridComponent.cellSize.x;
             sizeY = gridComponent.cellSize.y;
 
-            sizedInputX = input.x / sizeX;
-            sizedInputY = input.y / sizeY;
+            sizedInputX = (input.x / sizeX) - cartesianOffset.x;
+            sizedInputY = (input.y / sizeY) - cartesianOffset.y;
 
             isoX = sizedInputX + sizedInputY - isoOffset.x;
             isoY = -sizedInputX + sizedInputY - isoOffset.y;
@@ -66,8 +73,8 @@ namespace Assets.App.Common.Scripts
             snappedIsoY = Mathf.Round(isoY) + isoOffset.y;
 
             output = new(
-                (snappedIsoX - snappedIsoY) * (.5f * sizeX),
-                (snappedIsoX + snappedIsoY) * (.5f * sizeY)
+                (snappedIsoX - snappedIsoY + cartesianOffset.x) * (.5f * sizeX),
+                (snappedIsoX + snappedIsoY + cartesianOffset.y) * (.5f * sizeY)
             );
 
             transform.position = output;
