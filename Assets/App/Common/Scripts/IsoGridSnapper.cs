@@ -1,5 +1,6 @@
 using UnityEngine;
 
+#if UNITY_EDITOR
 namespace Assets.App.Common.Scripts
 {
     [ExecuteInEditMode]
@@ -86,3 +87,4 @@ namespace Assets.App.Common.Scripts
         }
     }
 }
+#endif
