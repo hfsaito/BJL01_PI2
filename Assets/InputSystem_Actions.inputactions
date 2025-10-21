@@ -16,6 +16,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Photo",
+                    "type": "Button",
+                    "id": "81e73e53-a2a2-482d-a26c-8701d72fae47",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Zoom",
                     "type": "Button",
                     "id": "4dd14ea9-d077-4663-85fa-2ab3b251a1f6",
@@ -78,6 +87,17 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Zoom",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7e9192f4-81d8-46b2-a957-86ad6fd0f69d",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Photo",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

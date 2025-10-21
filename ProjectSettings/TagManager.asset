@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Clue
   layers:
   - Default
   - TransparentFX
@@ -38,6 +39,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
   - name: tilemap
     uniqueID: 1245449821
     locked: 0
@@ -46,9 +50,6 @@ TagManager:
     locked: 0
   - name: ui
     uniqueID: 2892735347
-    locked: 0
-  - name: Default
-    uniqueID: 0
     locked: 0
   m_RenderingLayers:
   - Default
