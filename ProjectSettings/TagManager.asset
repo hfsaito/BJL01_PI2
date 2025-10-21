@@ -9,7 +9,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Clue
   - Water
   - UI
   - 
@@ -39,14 +39,14 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: tilemap
     uniqueID: 1245449821
     locked: 0
   - name: objects
     uniqueID: 1427484853
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0
   - name: ui
     uniqueID: 2892735347

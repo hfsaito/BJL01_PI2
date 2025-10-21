@@ -58,7 +58,7 @@ AnimatorController:
   m_Name: Camera Animator
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: Toggle Trigger
+  - m_Name: Toggle Zoom
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -125,7 +125,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Toggle Trigger
+    m_ConditionEvent: Toggle Zoom
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6120429924708028556}
