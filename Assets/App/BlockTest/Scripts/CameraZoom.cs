@@ -2,37 +2,36 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.Universal;
 
-using System.Collections;
 using UnityEngine.Events;
 
 namespace Assets.App.BlockTest.Scripts
 {
+    [RequireComponent(typeof(CameraControls))]
     public class CameraZoom : MonoBehaviour
     {
-        private InputSystem_Actions input;
-        private InputAction zoomAction;
-
-        public UnityEvent OnToggleZoom { get; private set; }
+        public readonly UnityEvent<bool> OnToggleZoomStart = new();
+        public readonly UnityEvent<bool> OnToggleZoomEnd = new();
         public bool Zoomed { get; private set; }
 
         private PixelPerfectCamera pixelPerfectCamera;
         private Animator animator;
-        readonly WaitForSeconds delayBetweenZoomToggles = new(1f);
+        private static readonly WaitForSeconds ONE_SEC = new(1);
+
+        private CameraControls c_cameraControls;
 
         void Awake()
         {
-            input = new();
-            zoomAction = input.Observer.Zoom;
+            c_cameraControls = GetComponent<CameraControls>();
         }
 
         void OnEnable()
         {
-            zoomAction.performed += HandleToggleZoom;
+            c_cameraControls.ZoomAction.performed += HandleToggleZoom;
         }
 
         void OnDisable()
         {
-            zoomAction.performed -= HandleToggleZoom;
+            c_cameraControls.ZoomAction.performed -= HandleToggleZoom;
         }
 
 
@@ -44,24 +43,20 @@ namespace Assets.App.BlockTest.Scripts
 
         private void HandleToggleZoom(InputAction.CallbackContext context)
         {
+            Zoomed = !Zoomed;
+
             animator.SetTrigger("Toggle Zoom");
+
             if (pixelPerfectCamera.assetsPPU == 64)
             {
                 pixelPerfectCamera.assetsPPU = 128;
-            } else
+            }
+            else
             {
                 pixelPerfectCamera.assetsPPU = 64;
             }
-            Zoomed = !Zoomed;
-            OnToggleZoom.Invoke();
-            StartCoroutine(DisableToggleTemporarily());
-        }
 
-        private IEnumerator DisableToggleTemporarily()
-        {
-            zoomAction.Disable();
-            yield return delayBetweenZoomToggles;
-            zoomAction.Enable();
+            c_cameraControls.TemporarilyDisable(ONE_SEC);
         }
     }
 }

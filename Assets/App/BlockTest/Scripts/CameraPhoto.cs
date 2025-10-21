@@ -4,31 +4,28 @@ using UnityEngine.InputSystem;
 namespace Assets.App.BlockTest.Scripts
 {
     [RequireComponent(typeof(CameraZoom))]
+    [RequireComponent(typeof(CameraControls))]
     public class CameraPhoto : MonoBehaviour
     {
-        private InputSystem_Actions input;
-        private InputAction photoAction;
         private RaycastHit2D hit;
 
+        private CameraControls c_cameraControls;
         private CameraZoom c_cameraZoom;
 
         void Awake()
         {
-            input = new();
-            photoAction = input.Observer.Photo;
+            c_cameraControls = GetComponent<CameraControls>();
             c_cameraZoom = GetComponent<CameraZoom>();
         }
 
         void OnEnable()
         {
-            input.Enable();
-            photoAction.performed += HandlePhoto;
+            c_cameraControls.PhotoAction.performed += HandlePhoto;
         }
 
         void OnDisable()
         {
-            input.Disable();
-            photoAction.performed -= HandlePhoto;
+            c_cameraControls.PhotoAction.performed -= HandlePhoto;
         }
 
         private void HandlePhoto(InputAction.CallbackContext _context)
