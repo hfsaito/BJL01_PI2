@@ -30,10 +30,7 @@ namespace Assets.App.BlockTest.Scripts
             if (distance.magnitude < .1f)
             {
                 currentWaypoint = currentWaypoint.NextWaypoint();
-                if (currentWaypoint != null)
-                {
-                    clue.SetActive(currentWaypoint.Action() == "clue");
-                }
+                clue.SetActive(currentWaypoint != null && currentWaypoint.Action() == "clue");
             }
         }
 

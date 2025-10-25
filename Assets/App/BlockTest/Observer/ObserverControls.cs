@@ -2,9 +2,9 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Assets.App.BlockTest.Scripts
+namespace Assets.App.BlockTest.Observer
 {
-    public class CameraControls : MonoBehaviour
+    public class ObserverControls : MonoBehaviour
     {
         public InputSystem_Actions Input { get; private set; }
         public InputAction MoveAction { get; private set; }
@@ -27,18 +27,6 @@ namespace Assets.App.BlockTest.Scripts
         void OnDisable()
         {
             Input.Disable();
-        }
-
-        public void TemporarilyDisable(WaitForSeconds timeToWait)
-        {
-            StartCoroutine(TmpDisableRoutine(timeToWait));
-        }
-
-        private IEnumerator TmpDisableRoutine(WaitForSeconds timeToWait)
-        {
-            Input.Disable();
-            yield return timeToWait;
-            Input.Enable();
         }
     }
 }
