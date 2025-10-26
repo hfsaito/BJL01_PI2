@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 
 using UnityEngine;
@@ -10,8 +11,6 @@ namespace Assets.App.BlockTest.Observer
     [RequireComponent(typeof(ObserverControls))]
     public class ObserverZoom : MonoBehaviour
     {
-        public readonly UnityEvent<bool> OnToggleZoomStart = new();
-        public readonly UnityEvent<bool> OnToggleZoomEnd = new();
         public bool Zoomed { get; private set; }
 
         private PixelPerfectCamera pixelPerfectCamera;
@@ -20,7 +19,7 @@ namespace Assets.App.BlockTest.Observer
 
         private ObserverControls c_observerControls;
 
-        public readonly UnityEvent PostZoomEvent = new();
+        public event Action OnToggleZoomEnd;
 
         void Start()
         {
@@ -65,7 +64,7 @@ namespace Assets.App.BlockTest.Observer
             c_observerControls.Input.Disable();
             yield return timeToWait;
             c_observerControls.Input.Enable();
-            PostZoomEvent.Invoke();
+            OnToggleZoomEnd.Invoke();
         }
     }
 }
