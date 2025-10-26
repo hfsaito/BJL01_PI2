@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+using Assets.App.BlockTest.Clues;
+
 namespace Assets.App.BlockTest.Observer
 {
     [RequireComponent(typeof(ObserverZoom))]
@@ -52,7 +54,10 @@ namespace Assets.App.BlockTest.Observer
             );
             if (hit.collider != null)
             {
-                Debug.Log("Achou pista!");
+                if (hit.collider.gameObject.TryGetComponent<Clue>(out var clue))
+                {
+                    clue.Capture();
+                }
             }
         }
 

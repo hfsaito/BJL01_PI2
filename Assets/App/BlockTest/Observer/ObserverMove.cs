@@ -27,7 +27,7 @@ namespace Assets.App.BlockTest.Observer
             UpdateCameraBounds();
 
             c_observerZoom = GetComponent<ObserverZoom>();
-            c_observerZoom.PostZoomEvent.AddListener(UpdateCameraBounds);
+            c_observerZoom.OnToggleZoomEnd += UpdateCameraBounds;
 
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
