@@ -13,18 +13,18 @@ namespace Assets.App.BlockTest.Observer
     {
         public bool Zoomed { get; private set; }
 
-        private PixelPerfectCamera pixelPerfectCamera;
-        private Animator animator;
-        private static readonly WaitForSeconds ONE_SEC = new(1);
-
+        private PixelPerfectCamera c_pixelPerfectCamera;
+        private Animator c_animator;
         private ObserverControls c_observerControls;
+
+        private static readonly WaitForSeconds ONE_SEC = new(1);
 
         public event Action OnToggleZoomEnd;
 
         void Start()
         {
-            pixelPerfectCamera = GetComponentInChildren<PixelPerfectCamera>();
-            animator = GetComponentInChildren<Animator>();
+            c_pixelPerfectCamera = GetComponentInChildren<PixelPerfectCamera>();
+            c_animator = GetComponentInChildren<Animator>();
 
             c_observerControls = GetComponent<ObserverControls>();
             c_observerControls.ZoomAction.performed += HandleToggleZoom;
@@ -39,15 +39,15 @@ namespace Assets.App.BlockTest.Observer
         {
             Zoomed = !Zoomed;
 
-            animator.SetTrigger("Toggle Zoom");
+            c_animator.SetTrigger("Zoom");
 
-            if (pixelPerfectCamera.assetsPPU == 64)
+            if (c_pixelPerfectCamera.assetsPPU == 64)
             {
-                pixelPerfectCamera.assetsPPU = 128;
+                c_pixelPerfectCamera.assetsPPU = 128;
             }
             else
             {
-                pixelPerfectCamera.assetsPPU = 64;
+                c_pixelPerfectCamera.assetsPPU = 64;
             }
 
 

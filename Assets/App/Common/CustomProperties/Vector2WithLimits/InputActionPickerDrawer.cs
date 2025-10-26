@@ -2,6 +2,7 @@ using System;
 using UnityEditor;
 using UnityEngine;
 
+#if UNITY_EDITOR
 namespace Assets.App.Common.CustomProperties.Vector2WithLimits
 {
     [CustomPropertyDrawer(typeof(Vector2WithLimitsAttribute))]
@@ -28,3 +29,4 @@ namespace Assets.App.Common.CustomProperties.Vector2WithLimits
         }
     }
 }
+#endif

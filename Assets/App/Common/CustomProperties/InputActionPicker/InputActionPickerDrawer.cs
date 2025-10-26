@@ -4,6 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+#if UNITY_EDITOR
 namespace Assets.App.Common.CustomProperties.InputActionPicker
 {
     [CustomPropertyDrawer(typeof(InputActionPickerAttribute))]
@@ -47,3 +48,4 @@ namespace Assets.App.Common.CustomProperties.InputActionPicker
         }
     }
 }
+#endif

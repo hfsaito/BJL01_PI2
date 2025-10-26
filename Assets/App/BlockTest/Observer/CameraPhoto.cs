@@ -11,40 +11,46 @@ namespace Assets.App.BlockTest.Observer
     {
         private RaycastHit2D hit;
 
-        private ObserverControls c_ObserverControls;
+        private Animator c_animator;
+        private ObserverControls c_observerControls;
         private ObserverZoom c_observerZoom;
+
 
         private int clueLayer;
 
         void OnEnable()
         {
-            if (c_ObserverControls != null)
+            if (c_observerControls != null)
             {
-                c_ObserverControls.PhotoAction.performed += HandlePhoto;
+                c_observerControls.PhotoAction.performed += HandlePhoto;
             }
         }
 
         void OnDisable()
         {
-            if (c_ObserverControls != null)
+            if (c_observerControls != null)
             {
-                c_ObserverControls.PhotoAction.performed -= HandlePhoto;
+                c_observerControls.PhotoAction.performed -= HandlePhoto;
             }
         }
 
         void Start()
         {
-            c_ObserverControls = GetComponent<ObserverControls>();
+            c_animator = GetComponentInChildren<Animator>();
+            c_observerControls = GetComponent<ObserverControls>();
             c_observerZoom = GetComponent<ObserverZoom>();
 
             clueLayer = LayerMask.GetMask("Clue");
 
-            c_ObserverControls.PhotoAction.performed += HandlePhoto;
+            c_observerControls.PhotoAction.performed += HandlePhoto;
         }
 
         private void HandlePhoto(InputAction.CallbackContext _context)
         {
             if (!c_observerZoom.Zoomed) return;
+
+            c_animator.SetTrigger("Photo");
+
             hit = Physics2D.CircleCast(
                 (Vector2)transform.position,
                 2,
