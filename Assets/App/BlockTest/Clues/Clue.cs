@@ -14,6 +14,8 @@ namespace Assets.App.BlockTest.Clues
 
             System.IO.Directory.CreateDirectory("ObserverClues");
             ScreenCapture.CaptureScreenshot($"ObserverClues/{Name}.png");
+
+            Globals.ClueFound(this);
         }
     }
 }

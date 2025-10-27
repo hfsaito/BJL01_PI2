@@ -1,5 +1,6 @@
 using UnityEditor;
 
+#if UNITY_EDITOR
 namespace Assets.App.BlockTest.Screenplays.Actions
 {
     [CustomEditor(typeof(ScreenplayAction))]
@@ -31,3 +32,4 @@ namespace Assets.App.BlockTest.Screenplays.Actions
         }
     }
 }
+#endif

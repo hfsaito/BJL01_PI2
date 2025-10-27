@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.Universal;
 
@@ -13,18 +12,19 @@ namespace Assets.App.BlockTest.Observer
     {
         public bool Zoomed { get; private set; }
 
-        private PixelPerfectCamera pixelPerfectCamera;
-        private Animator animator;
-        private static readonly WaitForSeconds ONE_SEC = new(1);
-
+        private PixelPerfectCamera c_pixelPerfectCamera;
         private ObserverControls c_observerControls;
 
-        public event Action OnToggleZoomEnd;
+        private static readonly WaitForSeconds DEBOUNCE = new(1f);
+        private static readonly WaitForSeconds HALF_DEBOUNCE = new(.5f);
+
+        public event Action OnZoomStart;
+        public event Action OnZoomPPUUpdated;
+        public event Action OnZoomEnd;
 
         void Start()
         {
-            pixelPerfectCamera = GetComponentInChildren<PixelPerfectCamera>();
-            animator = GetComponentInChildren<Animator>();
+            c_pixelPerfectCamera = GetComponentInChildren<PixelPerfectCamera>();
 
             c_observerControls = GetComponent<ObserverControls>();
             c_observerControls.ZoomAction.performed += HandleToggleZoom;
@@ -38,33 +38,33 @@ namespace Assets.App.BlockTest.Observer
         private void HandleToggleZoom(InputAction.CallbackContext context)
         {
             Zoomed = !Zoomed;
-
-            animator.SetTrigger("Toggle Zoom");
-
-            if (pixelPerfectCamera.assetsPPU == 64)
-            {
-                pixelPerfectCamera.assetsPPU = 128;
-            }
-            else
-            {
-                pixelPerfectCamera.assetsPPU = 64;
-            }
-
-
-            TemporarilyDisable(ONE_SEC);
+            UpdateCameraPPUInNextFrame();
+            TemporarilyDisable(DEBOUNCE);
         }
 
-        public void TemporarilyDisable(WaitForSeconds timeToWait)
+        private void UpdateCameraPPUInNextFrame()
+        {
+            StartCoroutine(UpdateCameraPPUInNextFrameRoutine());
+        }
+        private IEnumerator UpdateCameraPPUInNextFrameRoutine()
+        {
+            yield return HALF_DEBOUNCE;
+            c_pixelPerfectCamera.assetsPPU = c_pixelPerfectCamera.assetsPPU == 64 ? 128 : 64;
+            yield return new WaitForEndOfFrame();
+            OnZoomPPUUpdated?.Invoke();
+        }
+
+        private void TemporarilyDisable(WaitForSeconds timeToWait)
         {
             StartCoroutine(TmpDisableRoutine(timeToWait));
         }
-
         private IEnumerator TmpDisableRoutine(WaitForSeconds timeToWait)
         {
             c_observerControls.Input.Disable();
+            OnZoomStart?.Invoke();
             yield return timeToWait;
             c_observerControls.Input.Enable();
-            OnToggleZoomEnd.Invoke();
+            OnZoomEnd?.Invoke();
         }
     }
 }

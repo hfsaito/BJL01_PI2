@@ -1,10 +1,34 @@
 fileFormatVersion: 2
-guid: cd7872c4ab20ba446b86adc6c94dd09b
+guid: aff39aabffa16244eb9328264e929094
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7233257337577475538
-    second: suspect_0
+      213: 4454631428275665778
+    second: mouse_0
+  - first:
+      213: -3397387025712965628
+    second: mouse_1
+  - first:
+      213: -3124372832261642726
+    second: mouse_2
+  - first:
+      213: 3612782681000396837
+    second: mouse_3
+  - first:
+      213: -3154446981457803592
+    second: mouse_4
+  - first:
+      213: 4930236773760687789
+    second: mouse_5
+  - first:
+      213: 1938311220257969084
+    second: mouse_6
+  - first:
+      213: -7201445750087952622
+    second: mouse_7
+  - first:
+      213: 7494918433759398995
+    second: mouse_8
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,11 +70,11 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 9
-  spritePivot: {x: 0.5, y: 0.125}
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -113,23 +137,67 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: suspect_0
+      name: mouse_0
       rect:
         serializedVersion: 2
-        x: 16
-        y: 9
-        width: 35
-        height: 91
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e22f4b066ce4e9b90800000000000000
-      internalID: -7233257337577475538
+      spriteID: 27b79afaea702dd30800000000000000
+      internalID: 4454631428275665778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouse_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4089bdf008e0ad0d0800000000000000
+      internalID: -3397387025712965628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouse_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a16e923767ff3a4d0800000000000000
+      internalID: -3124372832261642726
       vertices: []
       indices: 
       edges: []
@@ -138,8 +206,8 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    spriteID: 5f42ba421e2672644a3d9a432cb92da6
+    internalID: 0
     vertices: []
     indices: 
     edges: []
@@ -148,7 +216,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      suspect_0: -7233257337577475538
+      mouse_0: 4454631428275665778
+      mouse_1: -3397387025712965628
+      mouse_2: -3124372832261642726
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
