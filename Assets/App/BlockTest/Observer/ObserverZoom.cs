@@ -12,10 +12,11 @@ namespace Assets.App.BlockTest.Observer
     {
         public bool Zoomed { get; private set; }
 
+        [SerializeField] private GameObject zoomHud;
+
         private PixelPerfectCamera c_pixelPerfectCamera;
         private ObserverControls c_observerControls;
 
-        private static readonly WaitForSeconds DEBOUNCE = new(1f);
         private static readonly WaitForSeconds HALF_DEBOUNCE = new(.5f);
 
         public event Action OnZoomStart;
@@ -24,10 +25,12 @@ namespace Assets.App.BlockTest.Observer
 
         void Start()
         {
+            zoomHud.SetActive(false);
             c_pixelPerfectCamera = GetComponentInChildren<PixelPerfectCamera>();
 
             c_observerControls = GetComponent<ObserverControls>();
             c_observerControls.ZoomAction.performed += HandleToggleZoom;
+
         }
 
         void OnDestroy()
@@ -38,31 +41,19 @@ namespace Assets.App.BlockTest.Observer
         private void HandleToggleZoom(InputAction.CallbackContext context)
         {
             Zoomed = !Zoomed;
-            UpdateCameraPPUInNextFrame();
-            TemporarilyDisable(DEBOUNCE);
+            zoomHud.SetActive(Zoomed);
+            StartCoroutine(HandleToggleZoomRoutine());
         }
 
-        private void UpdateCameraPPUInNextFrame()
+        private IEnumerator HandleToggleZoomRoutine()
         {
-            StartCoroutine(UpdateCameraPPUInNextFrameRoutine());
-        }
-        private IEnumerator UpdateCameraPPUInNextFrameRoutine()
-        {
+            c_observerControls.Input.Disable();
+            OnZoomStart?.Invoke();
             yield return HALF_DEBOUNCE;
             c_pixelPerfectCamera.assetsPPU = c_pixelPerfectCamera.assetsPPU == 64 ? 128 : 64;
             yield return new WaitForEndOfFrame();
             OnZoomPPUUpdated?.Invoke();
-        }
-
-        private void TemporarilyDisable(WaitForSeconds timeToWait)
-        {
-            StartCoroutine(TmpDisableRoutine(timeToWait));
-        }
-        private IEnumerator TmpDisableRoutine(WaitForSeconds timeToWait)
-        {
-            c_observerControls.Input.Disable();
-            OnZoomStart?.Invoke();
-            yield return timeToWait;
+            yield return HALF_DEBOUNCE;
             c_observerControls.Input.Enable();
             OnZoomEnd?.Invoke();
         }
