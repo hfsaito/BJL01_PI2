@@ -36,7 +36,7 @@ namespace Assets.App.BlockTest.Screenplays.Actions
                     MoveHere(character);
                     break;
                 case ScreenplayActionType.PLAY_ANIMATION:
-                    Animate();
+                    Animate(character);
                     break;
                 case ScreenplayActionType.SPAWN_OBJECT:
                     SpawnObject();
@@ -70,8 +70,9 @@ namespace Assets.App.BlockTest.Screenplays.Actions
         public string AnimtaionToPlay;
         public float AnimationTime;
 
-        private void Animate()
+        private void Animate(Character character)
         {
+            character.SetAnimation(AnimtaionToPlay);
             StartCoroutine(AnimateEnd());
         }
 

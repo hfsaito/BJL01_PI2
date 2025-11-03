@@ -14,7 +14,7 @@ namespace Assets.App.BlockTest.Screenplays
 
         void Start()
         {
-            RunNextAction();
+            Invoke(nameof(RunNextAction), 0);
         }
 
         private void RunNextAction()

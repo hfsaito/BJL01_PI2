@@ -4,6 +4,7 @@ using UnityEngine;
 namespace Assets.App.BlockTest.Characters
 {
     [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(Animator))]
     public class Character : MonoBehaviour
     {
         // [SerializeField]
@@ -14,6 +15,7 @@ namespace Assets.App.BlockTest.Characters
         // private GameObject clue;
 
         private Rigidbody2D c_rigidbody2d;
+        private Animator c_animator;
 
         private ScreenplayAction currentAction;
         private Vector2 destination, distance, velocity;
@@ -22,6 +24,7 @@ namespace Assets.App.BlockTest.Characters
         void Start()
         {
             c_rigidbody2d = GetComponent<Rigidbody2D>();
+            c_animator = GetComponent<Animator>();
         //     currentWaypoint = initialWaypoint;
         //     clue.SetActive(false);
         }
@@ -48,6 +51,12 @@ namespace Assets.App.BlockTest.Characters
             currentAction = action;
             velocity = (action.transform.position - transform.position).normalized * WALK_SPEED;
             destination = action.transform.position;
+
+            Debug.Log(velocity);
+
+            c_animator.SetBool("Walking", true);
+            c_animator.SetFloat("DirectionX", velocity.x);
+            c_animator.SetFloat("DirectionY", velocity.y);
         }
 
         private void FixedUpdate_Move()
@@ -68,6 +77,12 @@ namespace Assets.App.BlockTest.Characters
             }
         }
         #endregion
+
+        public void SetAnimation(string triggerName)
+        {
+            c_animator.SetBool("Walking", false);
+            // c_animator.SetTrigger(triggerName);
+        }
 
         public void ClearAction()
         {
