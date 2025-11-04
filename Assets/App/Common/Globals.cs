@@ -2,7 +2,7 @@ using System;
 
 using UnityEngine;
 
-using Assets.App.BlockTest.Clues;
+using Assets.App.Investigation.Clues;
 
 public static class Globals
 {
