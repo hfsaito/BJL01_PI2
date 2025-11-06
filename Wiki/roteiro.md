@@ -12,48 +12,55 @@
 
 ## Prólogo
 > Rosiane Freitas some no dia 13 de Maio de 1964 próximo a ponte da cidade  
+> Deixou uma carta escrita por uma máquina de datilografia dentro de seu carro abandonado
 
-> Deixou uma carta escrita por uma máquina de datilografia e pequenas manchas de sangue
+> Após 3 dias sem achar o corpo.  
+> A policia desiste das buscas.  
+> O `viúvo` providencia um funeral
 
-> Apesar de não acharem um corpo, o `viúvo` providenciou um funeral bem rapidamente
+> 20 de Maio de 1964  
+> A policia acha um pano de seda contendo sangue em um copartimento de difícil acesso no carro
 
-> 20 de Maio de 1964
+> O `viúvo` é levado a delegacia  
+> É um homem muito influente, não sairá preso com poucas provas.
 
 > Fique atento as pistas!
 
-## Dia 1
-1. `viúvo` sai da delegacia e caminha até o túmulo da `vítima`
-1. `viúvo` rasga a rosa que estava no túmulo e chuta o túmulo  
+## Dia 1 - O viúvo
+1. `viúvo` sai da delegacia e caminha até a lápide da `vítima`
+1. `viúvo` rasga a rosa que estava na lápide e chuta o lápide  
   `pista`
-1. `viúvo` deixa uma máquina de datilografia na lixeira da casa do `amante`  
+1. `viúvo` vai para casa
+1. `viúvo` joga fora uma máquina de datilografia
   `pista`
-    - A caixa do correio vai indicar o nome do `amante` indicado por um tooltip
 1. `viúvo` volta para casa
 
-## Dia 2
+> A policia chama `amiga` que conhecia bem a `vítima`
+> Ambas trabaram juntas
+
+## Dia 2 - A amiga
+1. `amiga` sai da delegacia e vai até o túmulo da `vítima`
+1. `amiga` vai para casa e sai com sacolas
+1. `amiga` vai até a fábrica abandonada e entra tentando não ser vista  
+  `pista`
+1. `amiga` sai da fábrica sem nenhuma sacola
+1. `amiga` vai para casa e no caminho ve `amante` no túmulo da `vítima` chorando
+1. `amiga` abraça o `amante`
+1. Os 2 vão até uma casa, o `amante` se despede e a `amiga` volta para sua casa
+
+> Quem era o homem que sofre tanto com sumiço da `vítima`?
+
+## Dia 3 - O amante
 1. `amante` sai de casa e vai até o túmulo da `vítima`
 1. `amante` ajeita o túmulo e deixa uma flor  
   `pista`
-1. `amante` volta para casa
-1. `amiga` chega na casa do `amante` e inicam uma conversa
-1. A policia chega
-
-> `amante` e `amiga` foram detidos. A policia achou a máquina de datilografia no lixo próximo a casa de `amante`  
-> `amiga` foi levada para responder algumas perguntas
-
-## Dia 3
-WORK IN PROGRESS
-
-1. `amiga` sai da delegacia e vai para casa
-    - A caixa do correio vai indicar o nome do `amiga` indicado por um tooltip
-1. `amiga` sai de casa e vai até o trabalho da `vítima`
-
-
-<!--  -->
-1. `amiga` sai de casa e deixa no lixo próximo a casa do `viúvo` uma faca com sangue  
+1. `amante` vai para o trabalho no jornal local da cidade
   `pista`
 
+> 1 hora depois
 
-## Dia 4
-
-## Dia 5
+1. `viúvo` sai de casa
+1. `viúvo` vai até a casa do `viúvo` e deixa uma faca com sague
+1. `viúvo` volta para casa
+1. No caminho `viúvo` e `amante` se encontram e brigam  
+  `pista`
