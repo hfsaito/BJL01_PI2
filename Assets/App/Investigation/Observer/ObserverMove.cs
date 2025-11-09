@@ -8,7 +8,9 @@ namespace Assets.App.Investigation.Observer
     [RequireComponent(typeof(ObserverZoom))]
     public class ObserverMove : MonoBehaviour
     {
-        private Camera c_camera;
+        public float LerpFactor;
+        [SerializeField] private Camera mainCamera;
+
         private Rigidbody2D c_rigidbody2d;
 
         private ObserverControls c_observerControls;
@@ -22,7 +24,6 @@ namespace Assets.App.Investigation.Observer
             c_rigidbody2d = GetComponent<Rigidbody2D>();
             c_observerControls = GetComponent<ObserverControls>();
 
-            c_camera = GetComponentInChildren<Camera>();
             c_observerControls.ZoomAction.performed += HandleToggleZoom;
             UpdateCameraBounds();
 
@@ -50,6 +51,14 @@ namespace Assets.App.Investigation.Observer
         void Update()
         {
             moveValue = c_observerControls.MoveAction.ReadValue<Vector2>();
+        }
+
+        private Vector3 mainCameraPositionAux;
+        void LateUpdate()
+        {
+            mainCameraPositionAux = transform.position;
+            mainCameraPositionAux.z = mainCamera.transform.position.z;
+            mainCamera.transform.position = Vector3.MoveTowards(mainCamera.transform.position, mainCameraPositionAux, LerpFactor * Time.deltaTime);
         }
 
         void FixedUpdate()
@@ -87,8 +96,8 @@ namespace Assets.App.Investigation.Observer
         private Vector3 GetCameraOrthograpicSize()
         {
             return new Vector3(
-                2 * c_camera.orthographicSize * c_camera.aspect,
-                2 * c_camera.orthographicSize
+                2 * mainCamera.orthographicSize * mainCamera.aspect,
+                2 * mainCamera.orthographicSize
             );
         }
     }

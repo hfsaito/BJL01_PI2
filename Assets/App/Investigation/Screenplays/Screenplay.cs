@@ -7,24 +7,17 @@ namespace Assets.App.Investigation.Screenplays
 {
     public class Screenplay : MonoBehaviour
     {
-        [SerializeField]
-        private Character character;
-        private int actionIndex = -1;
-        private ScreenplayAction currentAction;
 
-        void Start()
+        [SerializeField] private ScreenplayAction[] actions;
+        [SerializeField] private Character character;
+
+        private int actionIndex;
+
+        void Update()
         {
-            Invoke(nameof(RunNextAction), 0);
-        }
-
-        private void RunNextAction()
-        {
-            actionIndex++;
-            if (actionIndex >= transform.childCount) return;
-
-            currentAction = transform.GetChild(actionIndex).GetComponent<ScreenplayAction>();
-            currentAction.OnEnd += RunNextAction;
-            currentAction.Run(character);
+            if (actionIndex >= actions.Length) return;
+            actions[actionIndex].Run(character);
+            if (actions[actionIndex].Completed) actionIndex++;
         }
     }
 }

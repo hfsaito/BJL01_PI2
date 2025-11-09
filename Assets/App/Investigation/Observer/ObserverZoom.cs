@@ -13,8 +13,8 @@ namespace Assets.App.Investigation.Observer
         public bool Zoomed { get; private set; }
 
         [SerializeField] private GameObject zoomHud;
+        [SerializeField] private PixelPerfectCamera pixelPerfectCamera;
 
-        private PixelPerfectCamera c_pixelPerfectCamera;
         private ObserverControls c_observerControls;
 
         private static readonly WaitForSeconds HALF_DEBOUNCE = new(.5f);
@@ -26,7 +26,6 @@ namespace Assets.App.Investigation.Observer
         void Start()
         {
             zoomHud.SetActive(false);
-            c_pixelPerfectCamera = GetComponentInChildren<PixelPerfectCamera>();
 
             c_observerControls = GetComponent<ObserverControls>();
             c_observerControls.ZoomAction.performed += HandleToggleZoom;
@@ -50,7 +49,7 @@ namespace Assets.App.Investigation.Observer
             c_observerControls.Input.Disable();
             OnZoomStart?.Invoke();
             yield return HALF_DEBOUNCE;
-            c_pixelPerfectCamera.assetsPPU = c_pixelPerfectCamera.assetsPPU == 64 ? 128 : 64;
+            pixelPerfectCamera.assetsPPU = pixelPerfectCamera.assetsPPU == 64 ? 128 : 64;
             yield return new WaitForEndOfFrame();
             OnZoomPPUUpdated?.Invoke();
             yield return HALF_DEBOUNCE;
