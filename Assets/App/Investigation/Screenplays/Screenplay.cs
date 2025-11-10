@@ -1,30 +1,23 @@
 using UnityEngine;
 
 using Assets.App.Investigation.Characters;
-using Assets.App.Investigation.Screenplays.Actions;
+// using Assets.App.Investigation.Screenplays.Acts;
 
 namespace Assets.App.Investigation.Screenplays
 {
     public class Screenplay : MonoBehaviour
     {
-        [SerializeField]
-        private Character character;
-        private int actionIndex = -1;
-        private ScreenplayAction currentAction;
 
-        void Start()
+        [SerializeField] private Acts.Base[] acts;
+        [SerializeField] private Character character;
+
+        private int actIndex;
+
+        void Update()
         {
-            Invoke(nameof(RunNextAction), 0);
-        }
-
-        private void RunNextAction()
-        {
-            actionIndex++;
-            if (actionIndex >= transform.childCount) return;
-
-            currentAction = transform.GetChild(actionIndex).GetComponent<ScreenplayAction>();
-            currentAction.OnEnd += RunNextAction;
-            currentAction.Run(character);
+            if (actIndex >= acts.Length) return;
+            acts[actIndex].Run(character);
+            if (acts[actIndex].State == Acts.ActState.DONE) actIndex++;
         }
     }
 }
