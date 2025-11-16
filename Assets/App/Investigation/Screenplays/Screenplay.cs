@@ -1,3 +1,5 @@
+using System;
+
 using UnityEngine;
 
 using Assets.App.Investigation.Characters;
@@ -13,10 +15,21 @@ namespace Assets.App.Investigation.Screenplays
 
         private int actIndex;
 
+        [HideInInspector] public event Action OnFinish;
+        private bool finished = false;
+
         void Update()
         {
-            if (actIndex >= acts.Length) return;
-            acts[actIndex].Run(character);
+            if (actIndex >= acts.Length)
+            {
+                if (!finished)
+                {
+                    finished = true;
+                    OnFinish.Invoke();
+                }
+                return;
+            }
+            acts[actIndex].ActUpdate(character);
             if (acts[actIndex].State == Acts.ActState.DONE) actIndex++;
         }
     }

@@ -6,7 +6,7 @@ namespace Assets.App.Investigation.Screenplays.Acts
     [System.Serializable]
     public class Look : Base
     {
-        override public ActState Initialize(Character character)
+        override protected ActState Initialize(Character character)
         {
             character.Look(transform.position);
             return ActState.DONE;
