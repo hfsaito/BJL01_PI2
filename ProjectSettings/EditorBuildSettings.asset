@@ -5,15 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/App/Transition/Transition01.unity
     guid: 34ed3eefafd10ce42a166d8e950d30d4
   - enabled: 1
     path: Assets/App/Investigation/InvestigationDay01.unity
     guid: 4ff923cd386059f4c9ffe5b7b371b5bf
-  - enabled: 0
-    path: Assets/App/Investigation/Investigation.unity
-    guid: 90f92c7dc037aba489afcdd284184729
+  - enabled: 1
+    path: Assets/App/InvestigationBoard/InvestigationBoard.unity
+    guid: aaf58533b95b2614e8e41aba327a2269
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

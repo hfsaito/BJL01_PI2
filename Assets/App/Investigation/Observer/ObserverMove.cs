@@ -9,6 +9,7 @@ namespace Assets.App.Investigation.Observer
     public class ObserverMove : MonoBehaviour
     {
         public float LerpFactor;
+        public float MinLerpDelta;
         [SerializeField] private Camera mainCamera;
 
         private Rigidbody2D c_rigidbody2d;
@@ -58,7 +59,7 @@ namespace Assets.App.Investigation.Observer
         {
             mainCameraPositionAux = transform.position;
             mainCameraPositionAux.z = mainCamera.transform.position.z;
-            mainCamera.transform.position = Vector3.MoveTowards(mainCamera.transform.position, mainCameraPositionAux, LerpFactor * Time.deltaTime);
+            mainCamera.transform.position = mainCameraPositionAux; // Vector3.MoveTowards(mainCamera.transform.position, mainCameraPositionAux, LerpFactor * Time.deltaTime);
         }
 
         void FixedUpdate()
@@ -66,12 +67,23 @@ namespace Assets.App.Investigation.Observer
             FixedUpdate_MoveInsideWorldBounds();
         }
 
+        private Vector2 nextPosition;
+        private Vector2 auxMoveValue;
         private void FixedUpdate_MoveInsideWorldBounds()
         {
-            var nextPosition = Time.fixedDeltaTime * moveValue + c_rigidbody2d.position;
+            auxMoveValue = c_rigidbody2d.linearVelocity - moveValue;
+            if (auxMoveValue.magnitude > MinLerpDelta)
+            {
+                auxMoveValue = Vector2.Lerp(c_rigidbody2d.linearVelocity, moveValue, LerpFactor * Time.fixedDeltaTime);
+            } else
+            {
+                auxMoveValue = moveValue;
+            }
+
+            nextPosition = Time.fixedDeltaTime * auxMoveValue + c_rigidbody2d.position;
             if (cameraPositionBounds.Contains(nextPosition))
             {
-                c_rigidbody2d.linearVelocity = moveValue;
+                c_rigidbody2d.linearVelocity = auxMoveValue;
             }
             else
             {
