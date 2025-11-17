@@ -11,7 +11,7 @@
  <tileset firstgid="1" source="G:/structures-assets.tsx"/>
  <tileset firstgid="1" source="G:/blocks-tiles2.tsx"/>
  <tileset firstgid="1" source="G:/BLOCOS-1.tsx"/>
- <group id="76" name="RUAS" locked="1">
+ <group id="76" name="RUAS" visible="0" locked="1">
   <layer id="183" name="CANTOS ASFALTI" width="64" height="64" locked="1">
    <data encoding="base64">
     <chunk x="16" y="16" width="16" height="16">
