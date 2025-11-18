@@ -1,6 +1,6 @@
 using UnityEngine;
 
-using Assets.App.Investigation.Clues;
+using Assets.App.Common.Clues;
 
 namespace Assets.App.Investigation.Observer
 {
@@ -36,7 +36,7 @@ namespace Assets.App.Investigation.Observer
             audioSource.PlayOneShot(audioClipZoom);
         }
 
-        private void HandleClueFound(Clue _)
+        private void HandleClueFound(ClueId _)
         {
             audioSource.PlayOneShot(audioClipClue);
         }

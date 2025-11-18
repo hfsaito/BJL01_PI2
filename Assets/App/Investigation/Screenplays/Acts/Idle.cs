@@ -9,14 +9,14 @@ namespace Assets.App.Investigation.Screenplays.Acts
         [SerializeField] private float IdleTimeSeconds;
         private float targetTime = -1f;
 
-        override public ActState Initialize(Character character)
+        override protected ActState Initialize(Character character)
         {
             targetTime = Time.time + IdleTimeSeconds;
             character.Idle();
             return ActState.RUNNING;
         }
 
-        override public ActState Run(Character character)
+        override protected ActState Run(Character character)
         {
             if (Time.time > targetTime) return ActState.DONE;
             else                        return ActState.RUNNING;

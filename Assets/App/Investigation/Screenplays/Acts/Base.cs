@@ -20,24 +20,24 @@ namespace Assets.App.Investigation.Screenplays.Acts
             {
                 ActState.INITIALIZABLE => Initialize(character),
                 ActState.RUNNING => Run(character),
-                // ActState.DONE => End(character),
+                ActState.DONE => End(character),
                 _ => throw new System.NotImplementedException($"ActState not implemented: {State}"),
             };
         }
 
-        virtual public ActState Initialize(Character character)
+        virtual protected ActState Initialize(Character character)
         {
             throw new System.NotImplementedException("Missing");
         }
 
-        virtual public ActState Run(Character character)
+        virtual protected ActState Run(Character character)
         {
             throw new System.NotImplementedException("Missing");
         }
 
-        // virtual public ActState End(Character character)
-        // {
-        //     return ActState.DONE;
-        // }
+        virtual protected ActState End(Character character)
+        {
+            return ActState.DONE;
+        }
     }
 }

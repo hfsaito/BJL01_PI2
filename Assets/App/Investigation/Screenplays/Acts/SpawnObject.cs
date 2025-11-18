@@ -9,7 +9,7 @@ namespace Assets.App.Investigation.Screenplays.Acts
     {
         [SerializeField] private GameObject ObjectToSpawn;
 
-        override public ActState Initialize(Character _)
+        override protected ActState Initialize(Character _)
         {
             Instantiate(ObjectToSpawn, transform.position, Quaternion.identity);
             return ActState.DONE;

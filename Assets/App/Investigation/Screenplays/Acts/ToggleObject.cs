@@ -10,7 +10,7 @@ namespace Assets.App.Investigation.Screenplays.Acts
         [SerializeField] private GameObject ObjectToToggle;
         [SerializeField] private bool Active;
 
-        override public ActState Initialize(Character _)
+        override protected ActState Initialize(Character _)
         {
             ObjectToToggle.SetActive(Active);
             return ActState.DONE;
