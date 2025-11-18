@@ -23,7 +23,7 @@ namespace Assets.App.InvestigationBoard
         private void HandleClick()
         {
             Globals.DayCount++;
-            string nextSceneName = $"InvestigationDay{Globals.DayCount}";
+            string nextSceneName = $"InvestigationDay {Globals.DayCount}";
             Scene scene = SceneManager.GetSceneByName(nextSceneName);
             if (scene.IsValid())
             {

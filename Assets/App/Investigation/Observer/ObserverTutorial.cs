@@ -8,7 +8,6 @@ namespace Assets.App.Investigation.Observer
     [RequireComponent(typeof(ObserverZoom))]
     public class ObserverTutorial : MonoBehaviour
     {
-        [SerializeField] private Camera mainCamera;
         private ObserverControls c_observerControls;
 
         private GameObject tutorialFollow;
