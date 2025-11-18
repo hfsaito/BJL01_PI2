@@ -3,18 +3,25 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-using Assets.App.Investigation.Clues;
+using Assets.App.Common.Clues;
 
 public static class Globals
 {
     public static Bounds WorldBounds;
-    public static event Action<Clue> OnClueFound;
+    public static event Action<ClueId> OnClueFound;
+    public static Dictionary<ClueId, bool> Clues = new();
 
-    public static Dictionary<string, bool> Clues = new();
-
-    public static void ClueFound(Clue clue)
+    public static void ClueFound(ClueId clueId)
     {
-        Clues.Add(clue.ClueName, true);
-        OnClueFound.Invoke(clue);
+        Clues.Add(clueId, true);
+        OnClueFound.Invoke(clueId);
     }
+
+    public static event Action<ClueId> OnClueInspected;
+    public static void ClueInspected(ClueId clueId)
+    {
+        OnClueInspected.Invoke(clueId);
+    }
+
+    public static int DayCount = 1;
 }

@@ -11,7 +11,7 @@ namespace Assets.App.Common.WorldBounds
         {
             c_rectTransform = GetComponent<RectTransform>();
             Globals.WorldBounds = new(
-                c_rectTransform.rect.center,
+                c_rectTransform.anchoredPosition,
                 c_rectTransform.rect.size
             );
         }

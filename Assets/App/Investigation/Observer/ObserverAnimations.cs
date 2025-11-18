@@ -1,6 +1,6 @@
 using UnityEngine;
 
-using Assets.App.Investigation.Clues;
+using Assets.App.Common.Clues;
 
 namespace Assets.App.Investigation.Observer
 {
@@ -34,7 +34,7 @@ namespace Assets.App.Investigation.Observer
             cameraAnimator.SetTrigger("Zoom");
         }
 
-        private void HandleClueFound(Clue _)
+        private void HandleClueFound(ClueId _)
         {
             notificationAnimator.SetTrigger("Clue");
         }

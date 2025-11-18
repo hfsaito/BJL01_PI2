@@ -9,18 +9,17 @@ namespace Assets.App.Investigation.Screenplays
 {
     public class Screenplay : MonoBehaviour
     {
-
-        [SerializeField] private Acts.Base[] acts;
         [SerializeField] private Character character;
 
         private int actIndex;
+        private Acts.Base currentAct;
 
         [HideInInspector] public event Action OnFinish;
         private bool finished = false;
 
         void Update()
         {
-            if (actIndex >= acts.Length)
+            if (actIndex >= transform.childCount)
             {
                 if (!finished)
                 {
@@ -29,8 +28,9 @@ namespace Assets.App.Investigation.Screenplays
                 }
                 return;
             }
-            acts[actIndex].ActUpdate(character);
-            if (acts[actIndex].State == Acts.ActState.DONE) actIndex++;
+            currentAct = transform.GetChild(actIndex).GetComponent<Acts.Base>();
+            if (currentAct) currentAct.ActUpdate(character);
+            if (!currentAct || currentAct.State == Acts.ActState.DONE) actIndex++;
         }
     }
 }

@@ -16,6 +16,7 @@ namespace Assets.App.Investigation.Observer
             MoveAction = Input.Observer.Move;
             ZoomAction = Input.Observer.Zoom;
             PhotoAction = Input.Observer.Photo;
+            // Time.timeScale = 4f;
         }
 
         void OnEnable()
