@@ -23,10 +23,9 @@ namespace Assets.App.InvestigationBoard
         private void HandleClick()
         {
             Globals.DayCount++;
-            string nextSceneName = $"InvestigationDay {Globals.DayCount}";
-            Scene scene = SceneManager.GetSceneByName(nextSceneName);
-            if (scene.IsValid())
+            if (Globals.DayCount < 4)
             {
+                string nextSceneName = $"InvestigationDay {Globals.DayCount}";
                 SceneManager.LoadScene(nextSceneName);
             } else
             {
