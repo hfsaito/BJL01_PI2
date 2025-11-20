@@ -26,6 +26,13 @@ namespace Assets.App.Investigation.Observer
             Globals.OnClueFound += HandleClueFound;
         }
 
+        void OnDisable()
+        {
+            c_observerPhoto.OnPhotoStart -= HandlePhotoStart;
+            c_observerZoom.OnZoomStart -= HandleZoomStart;
+            Globals.OnClueFound -= HandleClueFound;
+        }
+
         private void HandlePhotoStart()
         {
             audioSource.PlayOneShot(audioClipPhoto);

@@ -15,6 +15,8 @@ public enum BlameOptionSuspect
 {
     NONE,
     WIDOWER,
+    FRIEND,
+    PARAMOUR,
 }
 
 public enum BlameOptionsWeapons
@@ -62,6 +64,8 @@ public static class BlameData
     {
         {BlameOptionSuspect.NONE, "--" },
         {BlameOptionSuspect.WIDOWER, "Viúvo" },
+        {BlameOptionSuspect.FRIEND, "Amiga" },
+        {BlameOptionSuspect.PARAMOUR, "Estranho" },
     };
     public static string GetSuspectLabel()
     {
@@ -71,6 +75,8 @@ public static class BlameData
     {
         {BlameOptionSuspect.NONE, new ClueId[] {} },
         {BlameOptionSuspect.WIDOWER, new ClueId[] { ClueId.WIDOWER_D1_ANGRY } },
+        {BlameOptionSuspect.FRIEND, new ClueId[] { ClueId.FRIEND_D2_BRIEFCASE } },
+        {BlameOptionSuspect.PARAMOUR, new ClueId[] { ClueId.PARAMOUR_D3_FLOWERS } },
     };
     private static void UpdateSuspects()
     {
