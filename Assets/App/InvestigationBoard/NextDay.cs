@@ -29,7 +29,7 @@ namespace Assets.App.InvestigationBoard
                 SceneManager.LoadScene(nextSceneName);
             } else
             {
-                SceneManager.LoadScene("End");
+                SceneManager.LoadScene("Failure");
             }
         }
     }
