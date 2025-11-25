@@ -49,7 +49,6 @@ namespace Assets.App.Investigation.Buildings
             turnOnOrOff = countLightsOn <= MIN_LIGHTS_ON ||
                 countLightsOn < MAX_LIGHTS_ON &&
                 Random.value > .5f;
-            Debug.Log($"turnOnOrOff: {turnOnOrOff}");
             filteredChildren = children.Where(child => child.activeSelf != turnOnOrOff);
             targetIndex = Random.Range(0, filteredChildren.Count());
             targetChild = filteredChildren.ElementAt(targetIndex);
