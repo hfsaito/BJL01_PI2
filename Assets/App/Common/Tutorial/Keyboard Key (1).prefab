@@ -93,8 +93,8 @@ MonoBehaviour:
   m_Padding:
     m_Left: 12
     m_Right: 12
-    m_Top: 0
-    m_Bottom: 12
+    m_Top: 5
+    m_Bottom: 11
   m_ChildAlignment: 4
   m_Spacing: 0
   m_ChildForceExpandWidth: 0
@@ -153,8 +153,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 12, y: -10}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 31.005, y: -13}
+  m_SizeDelta: {x: 38.01, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &11879893418735114
 CanvasRenderer:
@@ -184,7 +184,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: "espa\xE7o"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6b5543641ecf87047bd72c5441213733, type: 2}
   m_sharedMaterial: {fileID: -1732410830459283573, guid: 6b5543641ecf87047bd72c5441213733, type: 2}
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4279706151
   m_fontColor: {r: 0.15294118, g: 0.13333334, b: 0.09019608, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -219,7 +219,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 4096
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
