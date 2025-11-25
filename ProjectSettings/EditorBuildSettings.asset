@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/App/Menu/Start.unity
+    guid: 9eb143eafe879fb478593b290723a444
+  - enabled: 1
+    path: Assets/App/Menu/Credits.unity
+    guid: 5cfe74aa3f534584dba1d02955a5c7be
+  - enabled: 1
     path: Assets/App/StoryTransition/StoryTransition 1.unity
     guid: 34ed3eefafd10ce42a166d8e950d30d4
   - enabled: 1
@@ -20,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/App/InvestigationBoard/InvestigationBoard.unity
     guid: aaf58533b95b2614e8e41aba327a2269
+  - enabled: 1
+    path: Assets/App/End/Success.unity
+    guid: 6ddbe94b971ffec46bf50a52d380984f
   - enabled: 1
     path: Assets/App/End/Failure.unity
     guid: 0452a1110c4923b4eb17a056306af4e0

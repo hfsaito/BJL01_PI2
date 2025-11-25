@@ -2059,7 +2059,7 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8104693871782948286, guid: 3ad104c43f2b961449b788082614e264, type: 3}
   m_PrefabInstance: {fileID: 792838161}
   m_PrefabAsset: {fileID: 0}
---- !u!43 &815420098
+--- !u!43 &839365784
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4716,7 +4716,11 @@ PrefabInstance:
     - target: {fileID: 7775639302752430978, guid: 998c2afc72954ed48adc9758667c0bef, type: 3}
       propertyPath: m_ShadowMesh.m_Mesh
       value: 
-      objectReference: {fileID: 815420098}
+      objectReference: {fileID: 839365784}
+    - target: {fileID: 7775639302752430978, guid: 998c2afc72954ed48adc9758667c0bef, type: 3}
+      propertyPath: m_ShadowMesh.m_InitialTrim
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8695227990792639651, guid: 998c2afc72954ed48adc9758667c0bef, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1

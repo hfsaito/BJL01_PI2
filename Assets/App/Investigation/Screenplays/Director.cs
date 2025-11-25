@@ -10,7 +10,7 @@ namespace Assets.App.Investigation.Screenplays
         private Screenplay c_screenplay;
         void Start()
         {
-            // Time.timeScale = 5f;
+            Time.timeScale = 5f;
             foreach (Transform child in transform)
             {
                 c_screenplay = child.GetComponent<Screenplay>();
