@@ -13,17 +13,15 @@ namespace Assets.App.InvestigationBoard.Inspectors.Clue
         public void OnPointerEnter(PointerEventData eventData)
         {
             if (eventData.pointerEnter != gameObject) return;
-            DisplayerConnector.Inspect(
-                CluesData.TextByClue[clueId]
+            BaloonConnector.InspectPointerEnter(
+                CluesData.ToBaloonResourcePath[clueId]
             );
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
             if (eventData.pointerEnter != gameObject) return;
-            DisplayerConnector.Inspect(
-                CluesData.TextByClue[ClueId.NONE]
-            );
+            BaloonConnector.InspectPointerExit();
         }
 
         void Start()

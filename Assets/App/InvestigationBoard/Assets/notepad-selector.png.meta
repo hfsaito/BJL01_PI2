@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -116,20 +116,86 @@ TextureImporter:
       name: notepad-selector_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 6
-        width: 20
-        height: 20
+        x: 0
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 22d0d37621023d070800000000000000
+      spriteID: 06730dab381c60c4c9c82ac8180158ad
       internalID: 8129877015747431714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: notepad-selector_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76e28d8ac76849a4fa83b08b3007cdfa
+      internalID: -206137433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: notepad-selector_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53637a03f1e703443a034974a4198d51
+      internalID: -272722501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: notepad-selector_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdad1a5f764c197449b0fd4d61233886
+      internalID: 716799974
       vertices: []
       indices: 
       edges: []
@@ -149,6 +215,9 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       notepad-selector_0: 8129877015747431714
+      notepad-selector_1: -206137433
+      notepad-selector_2: -272722501
+      notepad-selector_3: 716799974
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
