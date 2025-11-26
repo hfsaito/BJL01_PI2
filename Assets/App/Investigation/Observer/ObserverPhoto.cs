@@ -16,7 +16,7 @@ namespace Assets.App.Investigation.Observer
         private ObserverZoom c_observerZoom;
 
         private int clueLayer;
-        private RaycastHit2D hit;
+        private RaycastHit2D[] hits;
 
         public event Action OnPhotoStart;
         private static readonly WaitForSeconds DEBOUNCE = new(1f);
@@ -57,7 +57,7 @@ namespace Assets.App.Investigation.Observer
 
         private void CheckForClues()
         {
-            hit = Physics2D.CircleCast(
+            hits = Physics2D.CircleCastAll(
                 (Vector2)transform.position,
                 2,
                 Vector2.zero,
@@ -65,9 +65,12 @@ namespace Assets.App.Investigation.Observer
                 clueLayer
             );
 
-            if (hit.collider != null)
+            foreach(RaycastHit2D hit in hits)
             {
-                if (hit.collider.gameObject.TryGetComponent<Clue>(out var clue))
+                if (
+                    hit.collider != null &&
+                    hit.collider.gameObject.TryGetComponent<Clue>(out var clue)
+                )
                 {
                     clue.Capture();
                 }

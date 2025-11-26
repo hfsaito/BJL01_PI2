@@ -2,11 +2,16 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+using Assets.App.Common.Transitions;
+
 namespace Assets.App.InvestigationBoard
 {
     public class NextDay : MonoBehaviour
     {
+
         private Button c_button;
+        [SerializeField] private FadeTransition fadeTransition;
+
         void Start()
         {
             Cursor.lockState = CursorLockMode.None;
@@ -25,11 +30,10 @@ namespace Assets.App.InvestigationBoard
             Globals.DayCount++;
             if (Globals.DayCount < 4)
             {
-                string nextSceneName = $"InvestigationDay {Globals.DayCount}";
-                SceneManager.LoadScene(nextSceneName);
+                fadeTransition.AsyncLoadScene("InvestigationNight");
             } else
             {
-                SceneManager.LoadScene("Failure");
+                fadeTransition.AsyncLoadScene("Failure");
             }
         }
     }

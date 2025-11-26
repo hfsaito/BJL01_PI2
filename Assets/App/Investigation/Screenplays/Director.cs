@@ -1,34 +1,40 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
+using Assets.App.Common.Transitions;
 
 namespace Assets.App.Investigation.Screenplays
 {
     public class Director : MonoBehaviour
     {
-        [SerializeField] private string nextSceneName;
-        private int screenplayCount;
-        private Screenplay c_screenplay;
+        private Transform currentEpisodeTransform;
+        private Episode currentEpisode;
+
+        [SerializeField] private FadeTransition fadeTransition;
+
         void Start()
         {
-            Time.timeScale = 5f;
-            foreach (Transform child in transform)
+            if (Globals.DayCount > transform.childCount)
             {
-                c_screenplay = child.GetComponent<Screenplay>();
-                if (c_screenplay != null)
-                {
-                    screenplayCount++;
-                    c_screenplay.OnFinish += HandleScreenplayFinish;
-                }
+                HandleEpisodeEnd();
+                return;
+            }
+            currentEpisodeTransform = transform.GetChild(Globals.DayCount - 1);
+            currentEpisode = currentEpisodeTransform.GetComponent<Episode>();
+            currentEpisode.OnEnd += HandleEpisodeEnd;
+            currentEpisode.Play();
+        }
+
+        void OnDisable()
+        {
+            if (currentEpisode != null)
+            {
+                currentEpisode.OnEnd -= HandleEpisodeEnd;
             }
         }
 
-        private void HandleScreenplayFinish()
+        private void HandleEpisodeEnd()
         {
-            screenplayCount--;
-            if (screenplayCount == 0)
-            {
-                SceneManager.LoadScene(nextSceneName);
-            }
+            fadeTransition.AsyncLoadScene("InvestigationBoard");
         }
     }
 }

@@ -65,7 +65,7 @@ Ele é um homem muito influente, não sairá preso com poucas provas",
                 StartCoroutine(TempDisableInput());
             } else
             {
-                string nextSceneName = $"InvestigationDay {Globals.DayCount}";
+                string nextSceneName = $"InvestigationNight";
                 SceneManager.LoadScene(nextSceneName);
             }
         }
