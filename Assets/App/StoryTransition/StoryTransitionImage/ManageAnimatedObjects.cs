@@ -60,7 +60,7 @@ namespace Assets.App.StoryTransition.StoryTransitionImage
                         storyTransitionImageAnimator.TriggerNextFrame();
                     } else
                     {
-                        LoadInvestigationDay();
+                        LoadInvestigationNight();
                     }
                     break;
             }
@@ -73,9 +73,9 @@ namespace Assets.App.StoryTransition.StoryTransitionImage
             input.Disable();
         }
 
-        private void LoadInvestigationDay()
+        private void LoadInvestigationNight()
         {
-            string nextSceneName = $"InvestigationDay {Globals.DayCount}";
+            string nextSceneName = $"InvestigationNight";
             SceneManager.LoadScene(nextSceneName);
         }
     }

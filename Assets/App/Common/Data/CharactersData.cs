@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Assets.App.Common.Clues;
 
 namespace Assets.App.Common.Data
 {
@@ -38,7 +39,16 @@ namespace Assets.App.Common.Data
             },
             {
                 CharacterId.Paramour,
-                () => Globals.DayCount >= 3
+                () =>
+                    (
+                        Globals.Clues.ContainsKey(ClueId.PARAMOUR_D2_SAD) &&
+                        Globals.Clues[ClueId.PARAMOUR_D2_SAD]
+                    ) ||
+                    (
+                        Globals.Clues.ContainsKey(ClueId.PARAMOUR_D3_FLOWERS) &&
+                        Globals.Clues[ClueId.PARAMOUR_D3_FLOWERS]
+                    )
+
             },
         };
         public static bool IsCharacterUnlockedInBoard(CharacterId character)

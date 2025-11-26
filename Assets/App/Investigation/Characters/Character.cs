@@ -36,11 +36,19 @@ namespace Assets.App.Investigation.Characters
 
         public void Idle()
         {
+            if (!gameObject.activeSelf)
+            {
+                return;
+            }
             c_animator.SetBool("Walking", false);
         }
 
         public void Move(Vector2 newDestination)
         {
+            if (!gameObject.activeSelf)
+            {
+                return;
+            }
             destination = newDestination;
             direction = (destination - (Vector2)transform.position).normalized;
 
@@ -52,6 +60,10 @@ namespace Assets.App.Investigation.Characters
 
         public void Look(Vector2 position)
         {
+            if (!gameObject.activeSelf)
+            {
+                return;
+            }
             direction = (position - (Vector2)transform.position).normalized;
             c_animator.SetBool("Walking", false);
             c_animator.SetFloat("DirectionX", direction.x);

@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
-
 using UnityEngine.SceneManagement;
+
+using Assets.App.Common.Transitions;
 
 namespace Assets.App.InvestigationBoard.Notepad
 {
@@ -9,6 +10,9 @@ namespace Assets.App.InvestigationBoard.Notepad
     public class Report : MonoBehaviour
     {
         private Button button;
+
+        [SerializeField] private FadeTransition fadeTransition;
+
 
         void Awake()
         {
@@ -35,7 +39,7 @@ namespace Assets.App.InvestigationBoard.Notepad
 
         private void HandleReport()
         {
-            SceneManager.LoadScene("Success");
+            fadeTransition.AsyncLoadScene("Success");
         }
     }
 }
