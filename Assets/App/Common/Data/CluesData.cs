@@ -18,6 +18,17 @@ namespace Assets.App.Common.Data
             { ClueId.WIDOWER_D3_KNIFE, "O viúvo se desfez de uma faca com sangue" },
         };
 
+        public static Dictionary<ClueId, string> ToBaloonResourcePath = new()
+        {
+            { ClueId.WIDOWER_D1_ANGRY, "EvidenceBaloons/Clues/Widower/Angry" },
+            { ClueId.WIDOWER_D1_TYPEWRITER, "EvidenceBaloons/Clues/Widower/Typewriter" },
+            { ClueId.FRIEND_D2_BRIEFCASE, "EvidenceBaloons/Clues/Friend/BRIEFCASE" },
+            { ClueId.FRIEND_D2_THEATER, "EvidenceBaloons/Clues/Friend/Theater" },
+            { ClueId.PARAMOUR_D2_SAD, "EvidenceBaloons/Clues/Paramour/Sad" },
+            { ClueId.PARAMOUR_D3_FLOWERS, "EvidenceBaloons/Clues/Paramour/Flowers" },
+            { ClueId.WIDOWER_D3_KNIFE, "EvidenceBaloons/Clues/Widower/Knife" },
+        };
+
         public static bool IsClueUnlocked(ClueId clueId)
         {
             return Globals.Clues.ContainsKey(clueId) &&

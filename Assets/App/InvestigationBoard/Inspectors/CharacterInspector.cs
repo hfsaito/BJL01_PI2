@@ -12,17 +12,15 @@ namespace Assets.App.InvestigationBoard.Inspectors.Character
         public void OnPointerEnter(PointerEventData eventData)
         {
             if (eventData.pointerEnter != gameObject) return;
-            DisplayerConnector.Inspect(
-                CharactersData.TextByCharacter[character]
+            BaloonConnector.InspectPointerEnter(
+                CharactersData.ToBaloonResourcePath[character]
             );
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
             if (eventData.pointerEnter != gameObject) return;
-            DisplayerConnector.Inspect(
-                CharactersData.TextByCharacter[CharacterId.None]
-            );
+            BaloonConnector.InspectPointerExit();
         }
 
         void Start()

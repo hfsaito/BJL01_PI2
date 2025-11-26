@@ -34,4 +34,6 @@ public static class Globals
     }
 
     public static int DayCount = 1;
+
+    public static bool ObserverZoomed;
 }

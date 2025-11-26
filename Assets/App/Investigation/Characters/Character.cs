@@ -1,9 +1,12 @@
 using UnityEngine;
 
+using Assets.App.Investigation.Observer;
+
 namespace Assets.App.Investigation.Characters
 {
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(Animator))]
+    [RequireComponent(typeof(AudioSource))]
     public class Character : MonoBehaviour
     {
         private Rigidbody2D c_rigidbody2d;
@@ -12,10 +15,13 @@ namespace Assets.App.Investigation.Characters
         private Vector2 destination, direction;
         private readonly float WALK_SPEED = .5f;
 
+        private AudioSource c_walkAudioSource;
+
         void Start()
         {
             c_rigidbody2d = GetComponent<Rigidbody2D>();
             c_animator = GetComponent<Animator>();
+            c_walkAudioSource = GetComponent<AudioSource>();
         }
 
         void FixedUpdate()
@@ -31,6 +37,7 @@ namespace Assets.App.Investigation.Characters
             {
                 c_rigidbody2d.position = destination;
                 c_rigidbody2d.linearVelocity = Vector2.zero;
+                c_walkAudioSource.Stop();
             }
         }
 
@@ -49,6 +56,7 @@ namespace Assets.App.Investigation.Characters
             {
                 return;
             }
+            c_walkAudioSource.Play();
             destination = newDestination;
             direction = (destination - (Vector2)transform.position).normalized;
 

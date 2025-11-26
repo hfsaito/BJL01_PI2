@@ -40,6 +40,7 @@ namespace Assets.App.Investigation.Observer
         private void HandleToggleZoom(InputAction.CallbackContext context)
         {
             Zoomed = !Zoomed;
+            Globals.ObserverZoomed = Zoomed;
             zoomHud.SetActive(Zoomed);
             StartCoroutine(HandleToggleZoomRoutine());
         }
@@ -49,7 +50,7 @@ namespace Assets.App.Investigation.Observer
             c_observerControls.Input.Disable();
             OnZoomStart?.Invoke();
             yield return HALF_DEBOUNCE;
-            pixelPerfectCamera.assetsPPU = pixelPerfectCamera.assetsPPU == 64 ? 128 : 64;
+            pixelPerfectCamera.assetsPPU = Zoomed ? 128 : 64;
             yield return new WaitForEndOfFrame();
             OnZoomPPUUpdated?.Invoke();
             yield return HALF_DEBOUNCE;

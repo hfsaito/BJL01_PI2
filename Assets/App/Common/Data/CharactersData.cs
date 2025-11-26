@@ -24,6 +24,15 @@ namespace Assets.App.Common.Data
             { CharacterId.Paramour, "O estranho" },
         };
 
+        public static Dictionary<CharacterId, string> ToBaloonResourcePath = new()
+        {
+            { CharacterId.None, "" },
+            { CharacterId.Victim, "EvidenceBaloons/Characters/Victim" },
+            { CharacterId.Widower, "EvidenceBaloons/Characters/Widower" },
+            { CharacterId.Friend, "EvidenceBaloons/Characters/Friend" },
+            { CharacterId.Paramour, "EvidenceBaloons/Characters/Paramour" },
+        };
+
         private delegate bool CharacterChecker();
         private static readonly Dictionary<CharacterId, CharacterChecker> CharacterForBoard = new()
         {
