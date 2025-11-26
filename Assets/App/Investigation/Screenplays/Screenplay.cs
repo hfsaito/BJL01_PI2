@@ -3,7 +3,6 @@ using System;
 using UnityEngine;
 
 using Assets.App.Investigation.Characters;
-// using Assets.App.Investigation.Screenplays.Acts;
 
 namespace Assets.App.Investigation.Screenplays
 {
@@ -14,23 +13,36 @@ namespace Assets.App.Investigation.Screenplays
         private int actIndex;
         private Acts.Base currentAct;
 
-        [HideInInspector] public event Action OnFinish;
-        private bool finished = false;
+        [HideInInspector] public event Action OnEnd;
+        private bool running = false;
 
         void Update()
         {
-            if (actIndex >= transform.childCount)
+            if (!running)
             {
-                if (!finished)
-                {
-                    finished = true;
-                    OnFinish.Invoke();
-                }
                 return;
             }
+
+            if (actIndex >= transform.childCount)
+            {
+                running = false;
+                OnEnd.Invoke();
+                return;
+            }
+
             currentAct = transform.GetChild(actIndex).GetComponent<Acts.Base>();
             if (currentAct) currentAct.ActUpdate(character);
             if (!currentAct || currentAct.State == Acts.ActState.DONE) actIndex++;
+        }
+
+        public void Play()
+        {
+            if (transform.childCount == 0)
+            {
+                return;
+            }
+            actIndex = 0;
+            running = true;
         }
     }
 }
